@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -33,6 +33,16 @@
 		A9FCA79E2BEB760700A5A1D2 /* PasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FCA79D2BEB760700A5A1D2 /* PasswordField.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		E97C2ADE2DCA933400A76F49 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7468536E2B0CAE9700E48DFE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 746853752B0CAE9700E48DFE;
+			remoteInfo = Niffler;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		746853762B0CAE9700E48DFE /* Niffler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Niffler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		746853792B0CAE9700E48DFE /* NifflerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NifflerApp.swift; sourceTree = "<group>"; };
@@ -61,7 +71,13 @@
 		A9DAF9022BBBD5C400B941BE /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 		A9F0B4632B1066AF00E33941 /* SpendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendsView.swift; sourceTree = "<group>"; };
 		A9FCA79D2BEB760700A5A1D2 /* PasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordField.swift; sourceTree = "<group>"; };
+		E97C2AD82DCA933400A76F49 /* NifflerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NifflerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E97C2AE42DCA970E00A76F49 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		E97C2AD92DCA933400A76F49 /* NifflerUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = NifflerUITests; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		746853732B0CAE9700E48DFE /* Frameworks */ = {
@@ -69,6 +85,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				749E20F62B0CB0070045F4E3 /* Api in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E97C2AD52DCA933400A76F49 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +104,8 @@
 				749E20F32B0CAFD60045F4E3 /* Niffler.xctestplan */,
 				749E20F22B0CAF1D0045F4E3 /* Api */,
 				746853782B0CAE9700E48DFE /* Niffler */,
+				E97C2AD92DCA933400A76F49 /* NifflerUITests */,
+				E97C2AE32DCA970E00A76F49 /* Frameworks */,
 				746853772B0CAE9700E48DFE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -89,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				746853762B0CAE9700E48DFE /* Niffler.app */,
+				E97C2AD82DCA933400A76F49 /* NifflerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -156,6 +182,14 @@
 			path = DataModels;
 			sourceTree = "<group>";
 		};
+		E97C2AE32DCA970E00A76F49 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E97C2AE42DCA970E00A76F49 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -179,6 +213,29 @@
 			productReference = 746853762B0CAE9700E48DFE /* Niffler.app */;
 			productType = "com.apple.product-type.application";
 		};
+		E97C2AD72DCA933400A76F49 /* NifflerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E97C2AE22DCA933400A76F49 /* Build configuration list for PBXNativeTarget "NifflerUITests" */;
+			buildPhases = (
+				E97C2AD42DCA933400A76F49 /* Sources */,
+				E97C2AD52DCA933400A76F49 /* Frameworks */,
+				E97C2AD62DCA933400A76F49 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E97C2ADF2DCA933400A76F49 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				E97C2AD92DCA933400A76F49 /* NifflerUITests */,
+			);
+			name = NifflerUITests;
+			packageProductDependencies = (
+			);
+			productName = NifflerUITests;
+			productReference = E97C2AD82DCA933400A76F49 /* NifflerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -186,11 +243,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1520;
+				LastSwiftUpdateCheck = 1630;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					746853752B0CAE9700E48DFE = {
 						CreatedOnToolsVersion = 15.0;
+					};
+					E97C2AD72DCA933400A76F49 = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = 746853752B0CAE9700E48DFE;
 					};
 				};
 			};
@@ -211,6 +272,7 @@
 			projectRoot = "";
 			targets = (
 				746853752B0CAE9700E48DFE /* Niffler */,
+				E97C2AD72DCA933400A76F49 /* NifflerUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -223,6 +285,13 @@
 				746853832B0CAE9900E48DFE /* Preview Assets.xcassets in Resources */,
 				A90083592BBA8CD100EB9D32 /* YoungSerif-Regular.ttf in Resources */,
 				746853802B0CAE9900E48DFE /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E97C2AD62DCA933400A76F49 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,7 +325,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E97C2AD42DCA933400A76F49 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E97C2ADF2DCA933400A76F49 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 746853752B0CAE9700E48DFE /* Niffler */;
+			targetProxy = E97C2ADE2DCA933400A76F49 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		7468539A2B0CAE9900E48DFE /* Debug */ = {
@@ -438,6 +522,42 @@
 			};
 			name = Release;
 		};
+		E97C2AE02DCA933400A76F49 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.niffler.NifflerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Niffler;
+			};
+			name = Debug;
+		};
+		E97C2AE12DCA933400A76F49 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.niffler.NifflerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Niffler;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -455,6 +575,15 @@
 			buildConfigurations = (
 				7468539D2B0CAE9900E48DFE /* Debug */,
 				7468539E2B0CAE9900E48DFE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E97C2AE22DCA933400A76F49 /* Build configuration list for PBXNativeTarget "NifflerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E97C2AE02DCA933400A76F49 /* Debug */,
+				E97C2AE12DCA933400A76F49 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
