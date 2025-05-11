@@ -75,6 +75,7 @@ final class NifflerUITests: XCTestCase {
     
     private func pressCreateNewAccountButton() {
         XCTContext.runActivity(named: "Press button 'Create new account'") { _ in
+            app.hideKeyboardIfPresent()
             app.staticTexts["Create new account"].tap()
         }
     }
@@ -87,7 +88,7 @@ final class NifflerUITests: XCTestCase {
     
     private func assertLoginField(_ expectedLogin: String, file: StaticString = #filePath, line: UInt = #line) {
         XCTContext.runActivity(named: "Assert that login has value '\(expectedLogin)'") { _ in
-            let inputLogin = app.textFields.matching(identifier: "userNameTextField").element(boundBy: 0)
+            let inputLogin = app.textFields.matching(identifier: "userNameTextField").firstMatch
             XCTAssertEqual(inputLogin.value as? String, expectedLogin,
                            "Login field value is wrong",
                            file: file,
@@ -97,7 +98,7 @@ final class NifflerUITests: XCTestCase {
     
     private func assertPasswordField(_ password: String, file: StaticString = #filePath, line: UInt = #line) {
         XCTContext.runActivity(named: "Assert that password has value '\(password)'") { _ in
-            app.buttons.matching(identifier: "passwordTextField").element(boundBy: 0).tap()
+            app.buttons.matching(identifier: "passwordTextField").firstMatch.tap()
             XCTAssertEqual(app.textFields["passwordTextField"].value as? String, password,
                            "Password field value is wrong",
                            file: file,
@@ -116,6 +117,30 @@ final class NifflerUITests: XCTestCase {
                           "Success message after registration doesn't appear",
                           file: file,
                           line: line)
+        }
+    }
+
+}
+
+extension XCUIApplication {
+    func hideKeyboardIfPresent(fallbackTapElementIdentifier: String? = nil) {
+        let keyboard = self.keyboards.element
+        guard keyboard.exists else { return }
+
+        // Попытка нажать кнопки на клавиатуре
+        if keyboard.buttons["Done"].exists {
+            keyboard.buttons["Done"].tap()
+        } else if keyboard.buttons["Return"].exists {
+            keyboard.buttons["Return"].tap()
+        } else if self.toolbars.buttons["Hide Keyboard"].exists {
+            // Для iPad — кнопка скрытия клавиатуры
+            self.toolbars.buttons["Hide Keyboard"].tap()
+        } else if let elementId = fallbackTapElementIdentifier, self.otherElements[elementId].exists {
+            // Фолбэк — тап по элементу, чтобы скрыть клавиатуру
+            self.otherElements[elementId].tap()
+        } else {
+            // Если всё остальное не сработало — попытка тапнуть в первое попавшееся безопасное место
+            self.otherElements.firstMatch.tap()
         }
     }
 }
