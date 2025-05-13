@@ -6,8 +6,11 @@
 //
 
 import XCTest
+import Fakery
 
 final class NifflerUITests: XCTestCase {
+    
+    let faker = Faker()
     
     var app: XCUIApplication!
     
@@ -15,17 +18,17 @@ final class NifflerUITests: XCTestCase {
         runUnauthorizedApplication()
     }
 
-   
     
     func testUserSignUp() throws {
         pressCreateNewAccountButton()
         
-        input(login: UUID().uuidString)
-        input(password: "12345")
-        input(confirmedPassword: "12345")
-        pressSignUpButton()
+        signUp(login: UUID().uuidString, password: "12345")
        
         assertSuccessUserRegistration()
+        app.scrollViews.buttons["Log in"].tap()
+        app.buttons["loginButton"].tap()
+        
+        assertIsSpendsViewAppeared(spendCount: 0)
     }
     
     func testPrefillCredentialsOnRegisterScreen() throws {
@@ -39,7 +42,71 @@ final class NifflerUITests: XCTestCase {
         assertPrefilledLoginPassword(userName, "12345")
     }
     
-   
+    func testAddSpend() throws {
+        login(username: "Tiggo", password: "12345")
+        
+        let spendDescription = faker.address.streetName()
+        addNewSpend(spendDescription)
+        
+        assertSpendInList(spendDescription)
+    }
+    
+    private func addNewSpend(_ description: String) {
+        app.buttons["addSpendButton"].tap()
+        app.textFields["amountField"].tap()
+        app.textFields["amountField"].typeText("100")
+        app.textFields["descriptionField"].tap()
+        app.textFields["descriptionField"].typeText(description)
+        if "+ New category" == app.otherElements["Select category"].label {
+            app.otherElements["Select category"].tap()
+            app.alerts.textFields.firstMatch.tap()
+            app.alerts.textFields.firstMatch.typeText(faker.car.brand())
+            app.alerts.buttons["Add"].tap()
+        }
+        app.buttons["Add"].tap()
+    }
+    
+    fileprivate func login(username: String, password: String) {
+        XCTContext.runActivity(named: "Logging by \(username)") { _ in
+            input(login: username)
+            input(password: password)
+            app.buttons["loginButton"].tap()
+            waitSpendsScreen()
+        }
+    }
+    
+    
+    private func assertSpendInList(_ description: String, file: StaticString = #filePath, line: UInt = #line) {
+        XCTContext.runActivity(named: "Spends screen waiting") { _ in
+            waitSpendsScreen()
+            XCTAssertTrue(app.otherElements["spendsList"].staticTexts[description].exists,
+                           file: file, line: line)
+        }
+    }
+    
+    private func assertIsSpendsViewAppeared(spendCount: Int = 1, file: StaticString = #filePath, line: UInt = #line) {
+        XCTContext.runActivity(named: "Spends screen waiting") { _ in
+            waitSpendsScreen()
+            XCTAssertGreaterThanOrEqual(app.otherElements["spendsList"].switches.count,
+                                        spendCount,
+                                        file: file, line: line)
+        }
+    }
+    
+    fileprivate func waitSpendsScreen(file: StaticString = #filePath, line: UInt = #line) {
+        let isFound = app.staticTexts["Statistics"].waitForExistence(timeout: 5)
+        XCTAssertTrue(isFound,
+                      "Spends screen didn't appear",
+                      file: file, line: line)
+    }
+    
+    
+    private func signUp(login: String, password: String) {
+        input(login: login)
+        input(password: password)
+        input(confirmedPassword: password)
+        pressSignUpButton()
+    }
     
     private func runUnauthorizedApplication() {
         XCTContext.runActivity(named: "Launch app without auth") { _ in

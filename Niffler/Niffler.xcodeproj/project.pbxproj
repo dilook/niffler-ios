@@ -31,6 +31,7 @@
 		A9DAF9032BBBD5C400B941BE /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DAF9022BBBD5C400B941BE /* LogoView.swift */; };
 		A9F0B4642B1066AF00E33941 /* SpendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0B4632B1066AF00E33941 /* SpendsView.swift */; };
 		A9FCA79E2BEB760700A5A1D2 /* PasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FCA79D2BEB760700A5A1D2 /* PasswordField.swift */; };
+		E9E31E2A2DD27EF400A19274 /* Fakery in Frameworks */ = {isa = PBXBuildFile; productRef = E9E31E292DD27EF400A19274 /* Fakery */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9E31E2A2DD27EF400A19274 /* Fakery in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +233,7 @@
 			);
 			name = NifflerUITests;
 			packageProductDependencies = (
+				E9E31E292DD27EF400A19274 /* Fakery */,
 			);
 			productName = NifflerUITests;
 			productReference = E97C2AD82DCA933400A76F49 /* NifflerUITests.xctest */;
@@ -266,6 +269,7 @@
 			mainGroup = 7468536D2B0CAE9700E48DFE;
 			packageReferences = (
 				749E20F42B0CB0070045F4E3 /* XCLocalSwiftPackageReference "Api" */,
+				E9E31E282DD27EF400A19274 /* XCRemoteSwiftPackageReference "Fakery" */,
 			);
 			productRefGroup = 746853772B0CAE9700E48DFE /* Products */;
 			projectDirPath = "";
@@ -597,10 +601,26 @@
 		};
 /* End XCLocalSwiftPackageReference section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		E9E31E282DD27EF400A19274 /* XCRemoteSwiftPackageReference "Fakery" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vadymmarkov/Fakery";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		749E20F52B0CB0070045F4E3 /* Api */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Api;
+		};
+		E9E31E292DD27EF400A19274 /* Fakery */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9E31E282DD27EF400A19274 /* XCRemoteSwiftPackageReference "Fakery" */;
+			productName = Fakery;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
