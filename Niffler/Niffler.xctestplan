@@ -33,9 +33,6 @@
       }
     },
     {
-      "skippedTests" : [
-        "AuthTests\/test_registerAndAuthorize()"
-      ],
       "target" : {
         "containerPath" : "container:Api",
         "identifier" : "ApiTests",
