@@ -52,18 +52,20 @@ final class NifflerUITests: XCTestCase {
     }
     
     private func addNewSpend(_ description: String) {
-        app.buttons["addSpendButton"].tap()
-        app.textFields["amountField"].tap()
-        app.textFields["amountField"].typeText("100")
-        app.textFields["descriptionField"].tap()
-        app.textFields["descriptionField"].typeText(description)
-        if "+ New category" == app.otherElements["Select category"].label {
-            app.otherElements["Select category"].tap()
-            app.alerts.textFields.firstMatch.tap()
-            app.alerts.textFields.firstMatch.typeText(faker.car.brand())
-            app.alerts.buttons["Add"].tap()
+        XCTContext.runActivity(named: "Adding spend with description: \(description)") { _ in
+            app.buttons["addSpendButton"].tap()
+            app.textFields["amountField"].tap()
+            app.textFields["amountField"].typeText("100")
+            app.textFields["descriptionField"].tap()
+            app.textFields["descriptionField"].typeText(description)
+            if "+ New category" == app.otherElements["Select category"].label {
+                app.otherElements["Select category"].tap()
+                app.alerts.textFields.firstMatch.tap()
+                app.alerts.textFields.firstMatch.typeText(faker.car.brand())
+                app.alerts.buttons["Add"].tap()
+            }
+            app.buttons["Add"].tap()
         }
-        app.buttons["Add"].tap()
     }
     
     fileprivate func login(username: String, password: String) {
