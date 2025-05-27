@@ -25,6 +25,8 @@ struct NifflerApp: App {
     
     func setupForUITests() {
         if ProcessInfo.processInfo.arguments.contains("RemoveAuthOnStart") {
+            let removeDate = Date().addingTimeInterval(-2*60*60)
+            HTTPCookieStorage.shared.removeCookies(since: removeDate)
             Auth.removeAuth()
             UIView.setAnimationsEnabled(false)
             UIApplication.shared.keyWindow?.layer.speed = 100
