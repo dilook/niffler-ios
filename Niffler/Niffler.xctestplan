@@ -28,7 +28,7 @@
       "parallelizable" : true,
       "target" : {
         "containerPath" : "container:Niffler.xcodeproj",
-        "identifier" : "746853912B0CAE9900E48DFE",
+        "identifier" : "E97C2AD72DCA933400A76F49",
         "name" : "NifflerUITests"
       }
     },
